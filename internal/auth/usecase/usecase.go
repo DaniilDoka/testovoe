@@ -37,9 +37,13 @@ func (u *usecase) ConfirmEmail(mail string, code int) error {
 		return fmt.Errorf("Invalid code")
 	}
 
-	err := u.repo.ConfirmEmail(mail)
+	if err := u.repo.ConfirmEmail(mail); err != nil {
+		return err
+	}
 
-	return err
+	delete(u.mailCodes, mail)
+
+	return nil
 }
 
 func (u *usecase) sendMailConfirm(mail string) error {

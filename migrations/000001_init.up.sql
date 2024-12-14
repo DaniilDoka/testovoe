@@ -10,8 +10,8 @@ insert into user_status(status) values('awaiting_confirmation');
 
 create table "user" (
     id UUID PRIMARY KEY default uuid_generate_v4(),
-    email TEXT not null,
-    nickname TEXT not null,
+    email TEXT not null unique,
+    nickname TEXT not null unique,
     password TEXT not null,
     status int references user_status(id) default 2
 );
