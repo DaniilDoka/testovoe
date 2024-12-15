@@ -9,9 +9,7 @@ import (
 type Config struct {
 	Server struct {
 		Port int    `env:"SERVER_PORT"`
-		Key  string `env:"KEY"`
 	}
-	MailerAddress string `env:"MAILER_ADDRESS"`
 	Db            pg.PgCredentials
 }
 
